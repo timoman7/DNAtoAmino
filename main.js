@@ -74,7 +74,7 @@ function getDNAInput(e){
 }
 function main(){
   let DNAInput = document.querySelector("#DNAString");
-  DNAInput.addEventListener('onkeydown', getDNAInput);
+  DNAInput.addEventListener('keydown', getDNAInput);
   getDNAChart();
 }
 window.addEventListener('load', main);
