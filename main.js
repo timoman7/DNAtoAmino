@@ -57,11 +57,12 @@ function DNA_to_Amino(DNA){
   return AminoAcidChain(toRNAChain(toRNA(DNA)));
 }
 function getDNAInput(e){
+  
   console.log(e)
 }
 function main(){
   let DNAInput = document.querySelector("#DNAString");
-  DNAInput.addEventListener('submit', getDNAInput);
-  getDNAChart()
+  DNAInput.addEventListener('onkeydown', getDNAInput);
+  getDNAChart();
 }
 window.addEventListener('load', main);
