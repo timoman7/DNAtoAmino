@@ -56,9 +56,21 @@ function AminoAcidChain(RNA_Chain){
 function DNA_to_Amino(DNA){
   return AminoAcidChain(toRNAChain(toRNA(DNA)));
 }
+function DNA_to_template(DNA){
+  let temp = document.querySelector("#AminoAcidTemplate");
+  let _AAC = DNA_to_Amino(DNA);
+    _AAC.forEach((AA) => {
+    temp.content.querySelector('.RNATriple').innerHTML = AA.full;
+    temp.content.querySelector('.AAFull').innerHTML = AA.aminoAcid;
+    temp.content.querySelector('.AAShort').innerHTML = AA.aminoAcidShort;
+    let newAA = document.importNode(temp.content, true);
+    document.querySelector("#AminoAcids").appendChild(newAA);
+  }
+}
 function getDNAInput(e){
-  
-  console.log(e)
+  if(e.code == "Enter" && e.key == "Enter"){
+    DNA_to_template(e.srcElement.value);
+  }
 }
 function main(){
   let DNAInput = document.querySelector("#DNAString");
