@@ -57,9 +57,11 @@ function DNA_to_Amino(DNA){
   return AminoAcidChain(toRNAChain(toRNA(DNA)));
 }
 function DNA_to_template(DNA){
-  document.querySelector("#AminoAcids").children.forEach((child) => {
+  let AAT = document.querySelector("#AminoAcids");
+  for(let i = AAT.children.length; i > 0; i--){
+    let child = document.querySelector("#AminoAcids").children[i];
     document.querySelector("#AminoAcids").removeChild(child);
-  });
+  };
   let temp = document.querySelector("#AminoAcidTemplate");
   let _AAC = DNA_to_Amino(DNA);
     _AAC.forEach((AA) => {
