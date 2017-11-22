@@ -65,7 +65,7 @@ function DNA_to_template(DNA){
     temp.content.querySelector('.AAShort').innerHTML = AA.aminoAcidShort;
     let newAA = document.importNode(temp.content, true);
     document.querySelector("#AminoAcids").appendChild(newAA);
-  }
+  });
 }
 function getDNAInput(e){
   if(e.code == "Enter" && e.key == "Enter"){
