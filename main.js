@@ -6,7 +6,7 @@ const convert = {
 };
 let DNAChart = {};
 function _getDNAChart(){
-  return fetch('./dnatranscript/dnaChart.json')
+  return fetch('./dnaChart.json')
   .then(function(response){
     return response.json();
   }).then(function(json){
