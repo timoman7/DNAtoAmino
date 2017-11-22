@@ -58,7 +58,7 @@ function DNA_to_Amino(DNA){
 }
 function DNA_to_template(DNA){
   let AAT = document.querySelector("#AminoAcids");
-  for(let i = AAT.children.length; i > 0; i--){
+  for(let i = AAT.children.length-1; i > 0; i--){
     let child = document.querySelector("#AminoAcids").children[i];
     if(child){
       document.querySelector("#AminoAcids").removeChild(child);
