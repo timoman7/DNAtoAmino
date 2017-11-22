@@ -4,7 +4,372 @@ const convert = {
   "C": "G",
   "G": "C"
 };
-let DNAChart = {};
+let DNAChart = {
+  "U": {
+    "U": {
+      "U": {
+        "full": "UUU",
+        "aminoAcid": "Phenylalanine",
+        "aminoAcidShort": "Phe"
+      },
+      "C": {
+        "full": "UUC",
+        "aminoAcid": "Phenylalanine",
+        "aminoAcidShort": "Phe"
+      },
+      "A": {
+        "full": "UUA",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      },
+      "G": {
+        "full": "UUG",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      }
+    },
+    "C": {
+      "U": {
+        "full": "UCU",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      },
+      "C": {
+        "full": "UCC",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      },
+      "A": {
+        "full": "UCA",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      },
+      "G": {
+        "full": "UCG",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      }
+    },
+    "A": {
+      "U": {
+        "full": "UAU",
+        "aminoAcid": "Tyrosisne",
+        "aminoAcidShort": "Tyr"
+      },
+      "C": {
+        "full": "UAC",
+        "aminoAcid": "Tyrosisne",
+        "aminoAcidShort": "Tyr"
+      },
+      "A": {
+        "full": "UAA",
+        "aminoAcid": "none",
+        "aminoAcidShort": "none",
+        "stop": true
+      },
+      "G": {
+        "full": "UAG",
+        "aminoAcid": "none",
+        "aminoAcidShort": "none",
+        "stop": true
+      }
+    },
+    "G": {
+      "U": {
+        "full": "UGU",
+        "aminoAcid": "Cysteine",
+        "aminoAcidShort": "Cys"
+      },
+      "C": {
+        "full": "UGC",
+        "aminoAcid": "Cysteine",
+        "aminoAcidShort": "Cys"
+      },
+      "A": {
+        "full": "UGA",
+        "aminoAcid": "none",
+        "aminoAcidShort": "none",
+        "stop": true
+      },
+      "G": {
+        "full": "UGG",
+        "aminoAcid": "Tryptophane",
+        "aminoAcidShort": "Trp"
+      }
+    }
+  },
+  "C": {
+    "U": {
+      "U": {
+        "full": "CUU",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      },
+      "C": {
+        "full": "CUC",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      },
+      "A": {
+        "full": "CUA",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      },
+      "G": {
+        "full": "CUG",
+        "aminoAcid": "Leucine",
+        "aminoAcidShort": "Leu"
+      }
+    },
+    "C": {
+      "U": {
+        "full": "CCU",
+        "aminoAcid": "Proline",
+        "aminoAcidShort": "Pro"
+      },
+      "C": {
+        "full": "CCC",
+        "aminoAcid": "Proline",
+        "aminoAcidShort": "Pro"
+      },
+      "A": {
+        "full": "CCA",
+        "aminoAcid": "Proline",
+        "aminoAcidShort": "Pro"
+      },
+      "G": {
+        "full": "CCG",
+        "aminoAcid": "Proline",
+        "aminoAcidShort": "Pro"
+      }
+    },
+    "A": {
+      "U": {
+        "full": "CAU",
+        "aminoAcid": "Histidine",
+        "aminoAcidShort": "His"
+      },
+      "C": {
+        "full": "CAC",
+        "aminoAcid": "Histidine",
+        "aminoAcidShort": "His"
+      },
+      "A": {
+        "full": "CAA",
+        "aminoAcid": "Glutamine",
+        "aminoAcidShort": "Gln"
+      },
+      "G": {
+        "full": "CAG",
+        "aminoAcid": "Glutamine",
+        "aminoAcidShort": "Gln"
+      }
+    },
+    "G": {
+      "U": {
+        "full": "CGU",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      },
+      "C": {
+        "full": "CGC",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      },
+      "A": {
+        "full": "CGA",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      },
+      "G": {
+        "full": "CGG",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      }
+    }
+  },
+  "A": {
+    "U": {
+      "U": {
+        "full": "AUU",
+        "aminoAcid": "Isoleucine",
+        "aminoAcidShort": "Ile"
+      },
+      "C": {
+        "full": "AUC",
+        "aminoAcid": "Isoleucine",
+        "aminoAcidShort": "Ile"
+      },
+      "A": {
+        "full": "AUA",
+        "aminoAcid": "Isoleucine",
+        "aminoAcidShort": "Ile"
+      },
+      "G": {
+        "full": "AUG",
+        "aminoAcid": "Methionine",
+        "aminoAcidShort": "Met",
+        "start": true
+      }
+    },
+    "C": {
+      "U": {
+        "full": "ACU",
+        "aminoAcid": "Threonine",
+        "aminoAcidShort": "Thr"
+      },
+      "C": {
+        "full": "ACC",
+        "aminoAcid": "Threonine",
+        "aminoAcidShort": "Thr"
+      },
+      "A": {
+        "full": "ACA",
+        "aminoAcid": "Threonine",
+        "aminoAcidShort": "Thr"
+      },
+      "G": {
+        "full": "ACG",
+        "aminoAcid": "Threonine",
+        "aminoAcidShort": "Thr"
+      }
+    },
+    "A": {
+      "U": {
+        "full": "AAU",
+        "aminoAcid": "Asparagine",
+        "aminoAcidShort": "Asn"
+      },
+      "C": {
+        "full": "AAC",
+        "aminoAcid": "Asparagine",
+        "aminoAcidShort": "Asn"
+      },
+      "A": {
+        "full": "AAA",
+        "aminoAcid": "Lysine",
+        "aminoAcidShort": "Lys"
+      },
+      "G": {
+        "full": "AAG",
+        "aminoAcid": "Lysine",
+        "aminoAcidShort": "Lys"
+      }
+    },
+    "G": {
+      "U": {
+        "full": "AGU",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      },
+      "C": {
+        "full": "AGC",
+        "aminoAcid": "Serine",
+        "aminoAcidShort": "Ser"
+      },
+      "A": {
+        "full": "AGA",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      },
+      "G": {
+        "full": "AGG",
+        "aminoAcid": "Arginine",
+        "aminoAcidShort": "Arg"
+      }
+    }
+  },
+  "G": {
+    "U": {
+      "U": {
+        "full": "GUU",
+        "aminoAcid": "Valine",
+        "aminoAcidShort": "Val"
+      },
+      "C": {
+        "full": "GUC",
+        "aminoAcid": "Valine",
+        "aminoAcidShort": "Val"
+      },
+      "A": {
+        "full": "GUA",
+        "aminoAcid": "Valine",
+        "aminoAcidShort": "Val"
+      },
+      "G": {
+        "full": "GUG",
+        "aminoAcid": "Valine",
+        "aminoAcidShort": "Val"
+      }
+    },
+    "C": {
+      "U": {
+        "full": "GCU",
+        "aminoAcid": "Alanine",
+        "aminoAcidShort": "Ala"
+      },
+      "C": {
+        "full": "GCC",
+        "aminoAcid": "Alanine",
+        "aminoAcidShort": "Ala"
+      },
+      "A": {
+        "full": "GCA",
+        "aminoAcid": "Alanine",
+        "aminoAcidShort": "Ala"
+      },
+      "G": {
+        "full": "GCG",
+        "aminoAcid": "Alanine",
+        "aminoAcidShort": "Ala"
+      }
+    },
+    "A": {
+      "U": {
+        "full": "GAU",
+        "aminoAcid": "Asparatic acid",
+        "aminoAcidShort": "Asp"
+      },
+      "C": {
+        "full": "GAC",
+        "aminoAcid": "Asparatic acid",
+        "aminoAcidShort": "Asp"
+      },
+      "A": {
+        "full": "GAA",
+        "aminoAcid": "Glutamic acid",
+        "aminoAcidShort": "Glu"
+      },
+      "G": {
+        "full": "GAG",
+        "aminoAcid": "Glutamic acid",
+        "aminoAcidShort": "Glu"
+      }
+    },
+    "G": {
+      "U": {
+        "full": "GGU",
+        "aminoAcid": "Glycine",
+        "aminoAcidShort": "Gly"
+      },
+      "C": {
+        "full": "GGC",
+        "aminoAcid": "Glycine",
+        "aminoAcidShort": "Gly"
+      },
+      "A": {
+        "full": "GGA",
+        "aminoAcid": "Glycine",
+        "aminoAcidShort": "Gly"
+      },
+      "G": {
+        "full": "GGG",
+        "aminoAcid": "Glycine",
+        "aminoAcidShort": "Gly"
+      }
+    }
+  }
+};
 function _getDNAChart(){
   return fetch('./dnaChart.json')
   .then(function(response){
@@ -72,6 +437,10 @@ function DNA_to_template(DNA){
     temp.content.querySelector('.AAShort').innerHTML = AA.aminoAcidShort;
     let newAA = document.importNode(temp.content, true);
     document.querySelector("#AminoAcids").appendChild(newAA);
+  });
+  document.querySelector("#RNAString").innerHTML = "";
+  toRNAChain(toRNA(DNA)).forEach((RNABit) => {
+    document.querySelector("#RNAString").innerHTML += "<span>"+RNABit+"</span>";
   });
 }
 function getDNAInput(e){
