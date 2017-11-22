@@ -60,7 +60,9 @@ function DNA_to_template(DNA){
   let AAT = document.querySelector("#AminoAcids");
   for(let i = AAT.children.length; i > 0; i--){
     let child = document.querySelector("#AminoAcids").children[i];
-    document.querySelector("#AminoAcids").removeChild(child);
+    if(child){
+      document.querySelector("#AminoAcids").removeChild(child);
+    }
   };
   let temp = document.querySelector("#AminoAcidTemplate");
   let _AAC = DNA_to_Amino(DNA);
