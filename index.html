@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DNA to Amino Acid</title>
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <template id="AminoAcidTemplate">
+      <tr>
+        <td class="RNATriple"></td>
+        <td class="AAFull"></td>
+        <td class="AAShort"></td>
+      </tr>
+    </template>
+    <label for="DNAString" placeholder="Enter a string of DNA here"></label>
+    <input type="text" id="DNAString" name="DNAString"/>
+    <table style="width: 100%; top: 30%; height: 100%; border-top: thin solid black;">
+      <thead>
+        <tr>
+          <th id="RNAString">?</th>
+        </tr>
+        <tr>
+          <th class="RNATriple">3 RNA Molecules</th>
+          <th class="AAFull">Name of amino acid</th>
+          <th class="AAShort">Shorthand of amino acid</th>
+        </tr>
+      </thead>
+      <tbody id="AminoAcids">
+      </tbody>
+    </table>
+  </body>
+</html>
