@@ -122,7 +122,8 @@ Read more: https://css-tricks.com/a-call-for-nth-everything/
 
     prepareTxt = {
              word  : function(text){return text.match(wordSpacePattern);},
-            letter: function(text){return text.split('');}
+            letter: function(text){return text.split('');},
+            webkit: function(text){return text;}
     },
 
     pseudoFunc = {
@@ -145,15 +146,31 @@ Read more: https://css-tricks.com/a-call-for-nth-everything/
             word :  function(period){
                     return period;
             }
+        },
+        "" : {
+          letter: function(period){
+            console.log(period)
+
+          },
+          word: function(period){
+            console.log(period)
+
+          },
+          webkit: function(period){
+            console.log(period)
+          }
         }
     },
 
     loopRecursive = function (contents, allText, parsedStyle){
          var func = parsedStyle.func, text, length, classNames, className, cat, period;
+         if(func != "webkit" && func != "child"){
          contents.each(function(){
             if (this.nodeType === 1){
                 loopRecursive($(this).contents(), allText, parsedStyle);
             }else if(this.nodeType === 3){
+                console.log(parsedStyle, prepareTxt,func,prepareTxt[func],pseudoFunc)
+
                  text = prepareTxt[func](this.nodeValue);
                  length = text.length;
                  classNames = new Array(length);
@@ -161,7 +178,7 @@ Read more: https://css-tricks.com/a-call-for-nth-everything/
                      className = parsedStyle.className[i];
                      cat       = parsedStyle.cat[i];
                      period    = parsedStyle.period[i];
-                     runPeriods (pseudoFunc[cat][func](period, allText, length), className, classNames, length, count);
+                       runPeriods (pseudoFunc[cat][func](period, allText, length), className, classNames, length, count);
                  }
 
                 $(this).replaceWith( processPeriod(classNames, text) );
@@ -170,6 +187,7 @@ Read more: https://css-tricks.com/a-call-for-nth-everything/
             }
         });
         return count;
+      }
     },
 
     parse = function(css) {

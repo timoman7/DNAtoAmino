@@ -12,8 +12,26 @@
         background-color: rgb(70, 100, 250);
       }
       body::-webkit-scrollbar{
-        display: none;
+        display: none !important;
       }
+      /*
+      #hiddenInput{
+        width: 0px;
+        height: 0px;
+        z-index:-1;
+        border: none;
+        position:absolute;
+      }
+      #RNAString:empty::after{
+        top: 300px;
+        width: 50px;
+        height: 50px;
+        content: "?";
+      }
+      #RNAString:nth-letter(even){
+        color: red;
+      }
+      */
       #DNAInputHolder{
         text-align: center;
         font-size: 30px;
@@ -35,9 +53,7 @@
         width: 100%;
         font-size: 12px;
       }
-      #DNAString:nth-letter(even){
-        color: red;
-      }
+
       #DNAString::-webkit-input-placeholder{
         font-family: "Arial" !important;
         color: lightgray !important;
@@ -98,6 +114,7 @@
     </style>
   </head>
   <body>
+    <!-- <input id="hiddenInput" onkeyup="document.querySelector('#RNAString').innerHTML = (this.value); $.fn.nthEverything()"></input> -->
     <template id="AminoAcidTemplate">
       <tr class="AminoAcid">
         <td class="RNATriple"></td>
@@ -109,7 +126,7 @@
       <label for="DNAString">DNA: </label>
       <input type="text" placeholder="Enter a string of DNA here" id="DNAString" name="DNAString"/>
     </div>
-    <div class="divWrapper"><div class="RNA" id="RNAString">?</div></div>
+    <div class="divWrapper"><div class="RNA" id="RNAString" onclick="/*document.querySelector('#hiddenInput').focus()*/">?</div></div>
     <div class="divWrapper">
     <table>
       <thead>
