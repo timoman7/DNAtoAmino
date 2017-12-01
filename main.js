@@ -4,6 +4,7 @@ const convert = {
   "C": "G",
   "G": "C"
 };
+
 let DNAChart = {
   "U": {
     "U": {
@@ -370,6 +371,17 @@ let DNAChart = {
     }
   }
 };
+function findByName(findIt){
+	for(let First in DNAChart){
+        for(let Second in DNAChart[First]){
+            for(let Third in DNAChart[First][Second]){
+                if(DNAChart[First][Second][Third].aminoAcid == findIt){
+                    console.log(DNAChart[First][Second][Third].full);
+                }
+            }
+        }
+    }
+}
 function _getDNAChart(){
   return fetch('./dnaChart.json')
   .then(function(response){
