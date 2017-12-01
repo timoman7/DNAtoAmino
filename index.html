@@ -39,11 +39,36 @@
         vertical-align: middle;
         margin-bottom: 20px;
       }
-      #DNAInputHolder label{
+      #DNAInputHolder select{
+        font-size: 30px;
+        border: transparent;
+        background-color: transparent;
         font-weight: bolder;
         font-family: "Arial";
+        -webkit-appearance: none;
       }
-      #DNAString{
+      #DNAInputHolder select:active{
+        background-color: rgba(255,255,255,0.1);
+        border: transparent;
+        -webkit-appearance: none;
+      }
+      #DNAInputHolder select:active::after{
+        background-color: rgba(255,255,255,0.1);
+        border: transparent;
+        -webkit-appearance: none;
+      }
+      #DNAInputHolder select:focus{
+        background-color: rgba(255,255,255,0.1);
+        border: transparent;
+        -webkit-appearance: none;
+      }
+      #DNAInputHolder select:focus::after{
+        background-color: rgba(255,255,255,0.1);
+        border: transparent;
+        -webkit-appearance: none;
+
+      }
+      #DNAString, #mRNAString{
         font-family: "Arial";
         border: thin solid black;
         background-color: rgb(0,0,100);
@@ -54,7 +79,7 @@
         font-size: 12px;
       }
 
-      #DNAString::-webkit-input-placeholder{
+      #DNAString::-webkit-input-placeholder, #mRNAString::-webkit-input-placeholder{
         font-family: "Arial" !important;
         color: lightgray !important;
         caret-color: lightgray !important;
@@ -122,18 +147,16 @@
         <td class="AAShort"></td>
       </tr>
     </template>
-    <select class="ModeSelect" name="ModeSelect" placeholder="Mode">
-      <option value="DNA">DNA</option>
-      <option value="mRNA">mRNA</option>
-    </select>
     <div id="DNAInputHolder">
+      <select class="ModeSelect" name="ModeSelect" placeholder="Mode">
+        <option value="DNA">DNA: </option>
+        <option value="mRNA">mRNA: </option>
+      </select>
       <div id="DNAOpt">
-        <label for="DNAString">DNA: </label>
-        <input type="text" placeholder="Enter a string of DNA here" id="DNAString" name="DNAString"/>
+        <input tabindex="-1" type="text" placeholder="Enter a string of DNA here" id="DNAString" name="DNAString"/>
       </div>
-      <div id="RNAOpt">
-        <label for="mRNAString">mRNA: </label>
-        <input type="text" placeholder="Enter a string of mRNA here" id="mRNAString" name="mRNAString"/>
+      <div id="RNAOpt" style="display: none;">
+        <input tabindex="-1" type="text" placeholder="Enter a string of mRNA here" id="mRNAString" name="mRNAString"/>
       </div>
     </div>
     <div class="divWrapper"><div class="RNA" id="RNAString" onclick="/*document.querySelector('#hiddenInput').focus()*/">?</div></div>
