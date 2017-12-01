@@ -122,9 +122,19 @@
         <td class="AAShort"></td>
       </tr>
     </template>
+    <select class="ModeSelect" name="ModeSelect" placeholder="Mode">
+      <option value="DNA">DNA</option>
+      <option value="mRNA">mRNA</option>
+    </select>
     <div id="DNAInputHolder">
-      <label for="DNAString">DNA: </label>
-      <input type="text" placeholder="Enter a string of DNA here" id="DNAString" name="DNAString"/>
+      <div id="DNAOpt">
+        <label for="DNAString">DNA: </label>
+        <input type="text" placeholder="Enter a string of DNA here" id="DNAString" name="DNAString"/>
+      </div>
+      <div id="RNAOpt">
+        <label for="mRNAString">mRNA: </label>
+        <input type="text" placeholder="Enter a string of mRNA here" id="mRNAString" name="mRNAString"/>
+      </div>
     </div>
     <div class="divWrapper"><div class="RNA" id="RNAString" onclick="/*document.querySelector('#hiddenInput').focus()*/">?</div></div>
     <div class="divWrapper">

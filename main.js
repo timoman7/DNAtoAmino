@@ -418,8 +418,8 @@ function AminoAcidChain(RNA_Chain){
   });
   return AAChain;
 }
-function DNA_to_Amino(DNA){
-  return AminoAcidChain(toRNAChain(toRNA(DNA)));
+function mRNA_to_Amino(mRNA){
+  return AminoAcidChain(toRNAChain(mRNA));
 }
 function DNA_to_template(DNA){
   let AAT = document.querySelector("#AminoAcids");
@@ -443,14 +443,55 @@ function DNA_to_template(DNA){
     document.querySelector("#RNAString").innerHTML += "<span>"+RNABit+"</span>";
   });
 }
+function mRNA_to_template(mRNA){
+    let AAT = document.querySelector("#AminoAcids");
+    for(let i = AAT.children.length-1; i >= 0; i--){
+      let child = document.querySelector("#AminoAcids").children[i];
+      if(child){
+        document.querySelector("#AminoAcids").removeChild(child);
+      }
+    };
+    let temp = document.querySelector("#AminoAcidTemplate");
+    let _AAC = DNA_to_Amino(DNA);
+      _AAC.forEach((AA) => {
+      temp.content.querySelector('.RNATriple').innerHTML = AA.full;
+      temp.content.querySelector('.AAFull').innerHTML = AA.aminoAcid;
+      temp.content.querySelector('.AAShort').innerHTML = AA.aminoAcidShort;
+      let newAA = document.importNode(temp.content, true);
+      document.querySelector("#AminoAcids").appendChild(newAA);
+    });
+    document.querySelector("#RNAString").innerHTML = "";
+    toRNAChain(toRNA(DNA)).forEach((RNABit) => {
+      document.querySelector("#RNAString").innerHTML += "<span>"+RNABit+"</span>";
+    });
+}
 function getDNAInput(e){
   if(e.code == "Enter" && e.key == "Enter"){
     DNA_to_template(e.srcElement.value);
   }
 }
+function getmRNAInput(e){
+  if(e.code == "Enter" && e.key == "Enter"){
+    mRNA_to_template(e.srcElement.value);
+  }
+}
+function changeMode(e){
+  let mode = e.srcElement.value;
+  if(mode == "DNA"){
+    document.querySelector("#RNAOpt").style.display = "none";
+    document.querySelector("#DNAOpt").style.display = "block";
+  }else if(mode == "mRNA"){
+    document.querySelector("#RNAOpt").style.display = "block";
+    document.querySelector("#DNAOpt").style.display = "none";
+  }
+}
 function main(){
   let DNAInput = document.querySelector("#DNAString");
+  let mRNAInput = document.querySelector("#mRNAString");
+  let ModeSelect = document.querySelector(".ModeSelect");
   DNAInput.addEventListener('keydown', getDNAInput);
+  mRNAInput.addEventListener('keydown', getmRNAInput);
+  ModeSelect.addEventListener('change', changeMode);
   getDNAChart();
 }
 window.addEventListener('load', main);
