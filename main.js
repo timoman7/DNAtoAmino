@@ -418,6 +418,9 @@ function AminoAcidChain(RNA_Chain){
   });
   return AAChain;
 }
+function DNA_to_Amino(DNA){
+  return AminoAcidChain(toRNAChain(toRNA(DNA)));
+}
 function mRNA_to_Amino(mRNA){
   return AminoAcidChain(toRNAChain(mRNA));
 }
@@ -452,7 +455,7 @@ function mRNA_to_template(mRNA){
       }
     };
     let temp = document.querySelector("#AminoAcidTemplate");
-    let _AAC = DNA_to_Amino(DNA);
+    let _AAC = mRNA_to_Amino(mRNA);
       _AAC.forEach((AA) => {
       temp.content.querySelector('.RNATriple').innerHTML = AA.full;
       temp.content.querySelector('.AAFull').innerHTML = AA.aminoAcid;
@@ -461,7 +464,7 @@ function mRNA_to_template(mRNA){
       document.querySelector("#AminoAcids").appendChild(newAA);
     });
     document.querySelector("#RNAString").innerHTML = "";
-    toRNAChain(toRNA(DNA)).forEach((RNABit) => {
+    toRNAChain(mRNA).forEach((RNABit) => {
       document.querySelector("#RNAString").innerHTML += "<span>"+RNABit+"</span>";
     });
 }
